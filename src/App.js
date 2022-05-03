@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import HeadingSection from './components/Header/HeadingSection';
 
 function App() {
   return (
-    <div>
-      <p>Weather App</p>
+    <div className='mainSection'>
+      <HeadingSection />
     </div>
   );
 }
