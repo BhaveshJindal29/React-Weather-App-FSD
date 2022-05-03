@@ -15,7 +15,7 @@ export class WeatherDetails extends Component {
     //let weatherIcon = "http://openweathermap.org/img/w/" + this.props.weatherIcon + ".png"
     return (
       <div>
-        <div>
+        <div className="WeatherDetailsMain">
           <span className="cityLocation">
             {this.props.cityName}, {this.props.cityCountry},{" "}{dateNow.toDateString()}
           </span>
@@ -43,18 +43,7 @@ export class WeatherDetails extends Component {
             </div>
           </div>
         </div>
-        <div
-          style={{
-            background: "#FFFFFF",
-            boxShadow: "0px 4px 32px rgba(143, 143, 143, 0.4)",
-            borderRadius: "4px",
-            padding: "10px",
-            marginTop: "10px",
-            paddingBottom: "10px",
-            marginLeft: "15%",
-            marginRight: "15%",
-          }}
-        >
+        <div className="commentSection">
           {/* <AddComment></AddComment> */}
         </div>
         <br />
