@@ -1,5 +1,5 @@
 .searchMain{
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
    padding: 10px;
    border-radius: 5px;
    font-size: 15px;
-   
+   color: #847E7E;
 
 }
 
@@ -19,7 +19,7 @@
     padding-right: 10px;
     background-color: #8A00F7;
     color: white;
-    font-size: 18px;
+    font-size: 21px;
     margin-left: 2px;
     padding-top: 7px;
     padding-bottom: 7px;
