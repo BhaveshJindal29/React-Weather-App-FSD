@@ -1,20 +1,33 @@
-import React,{Component} from 'react'
-import './SearchSection.css';
+import React, { Component } from "react";
+import "./SearchSection.css";
 
 class SearchSection extends Component {
+  constructor() {
+    super();
+    this.state = {
+      cityName: null,
+    };
+    //this.handleSearchInput = this.handleSearchInput.bind(this);
+  }
+  updateCityName(e) {
+    this.setState({ cityName: e.target.value });
+  }
 
-    render(){
-        return (
-            <div>
-                <div className='searchMain'>
-                      <input className="locationTextBox" type="text" id="cityName" size="75" placeholder='Enter City Name...'/>
-                      <input className="searchButton" type="submit" value="Search"/><br/>
-                  </div>
-            </div>
-          
-        )
-    }
-  
+  render() {
+    return (
+      <div className="mainSearchSection">
+        <input
+          className="inputLocation"
+          placeholder="Enter City Name..."
+          value={this.state.cityName}
+          onChange={(e) => this.updateCityName(e)}
+        />
+        <button className="searchButton" onClick={this.handleSearchInput}>
+          Search
+        </button>
+      </div>
+    );
+  }
 }
 
-export default SearchSection
+export default SearchSection;
