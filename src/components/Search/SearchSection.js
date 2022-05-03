@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import "./SearchSection.css";
 
 class SearchSection extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       cityName: null,
+//     };
+//     this.handleSearchInput = this.handleSearchInput.bind(this);
+//   }
+
   constructor() {
     super();
     this.state = {
@@ -9,6 +17,8 @@ class SearchSection extends Component {
     };
     //this.handleSearchInput = this.handleSearchInput.bind(this);
   }
+
+
   updateCityName(e) {
     this.setState({ cityName: e.target.value });
   }
