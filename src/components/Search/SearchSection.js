@@ -1,27 +1,35 @@
 import React, { Component } from "react";
 import "./SearchSection.css";
 
-class SearchSection extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       cityName: null,
-//     };
-//     this.handleSearchInput = this.handleSearchInput.bind(this);
-//   }
+import PropTypes from "prop-types";
 
-  constructor() {
-    super();
+class SearchSection extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       cityName: null,
     };
-    //this.handleSearchInput = this.handleSearchInput.bind(this);
+    this.handleSearchInput = this.handleSearchInput.bind(this);
   }
+
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     cityName: null,
+  //   };
+  //   //this.handleSearchInput = this.handleSearchInput.bind(this);
+  // }
 
 
   updateCityName(e) {
     this.setState({ cityName: e.target.value });
   }
+
+  handleSearchInput() {
+    console.log("handleSearchInput fired");
+    this.props.searchCity(this.props.cityName);
+  }
+  
 
   render() {
     return (
@@ -39,5 +47,10 @@ class SearchSection extends Component {
     );
   }
 }
+
+SearchSection.propTypes = {
+  searchCity: PropTypes.func,
+};
+
 
 export default SearchSection;

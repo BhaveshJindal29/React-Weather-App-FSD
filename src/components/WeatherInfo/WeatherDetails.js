@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import CommentSection from "../Comment/CommentSection";
 import './WeatherDetails.css';
 export class WeatherDetails extends Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  // }
-
-  constructor() {
-    super();
   }
+
+  // constructor() {
+  //   super();
+  // }
 
   render() {
     let dateNow = new Date();
-    //let weatherIcon = "http://openweathermap.org/img/w/" + this.props.weatherIcon + ".png"
+    let weatherIcon = "http://openweathermap.org/img/w/" + this.props.weatherIcon + ".png"
     return (
       <div>
         <div className="WeatherDetailsMain">
@@ -26,7 +26,7 @@ export class WeatherDetails extends Component {
             <div className="leftSide">
               <h1>
                 <span className="weatherIcon">
-                  {/* {this.props.cityTemperature}&deg;C <img src={weatherIcon} /> */}
+                  {this.props.cityTemperature}&deg;C <img src={weatherIcon} />
                 </span>
               </h1>
             </div>
