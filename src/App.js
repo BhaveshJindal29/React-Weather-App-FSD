@@ -47,19 +47,23 @@ class App extends Component {
 
 let that = this;
 
-  fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+"&appid=d2978ac34827965e00783e61165643e1&units=metric")
+  // fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+"&appid=d2978ac34827965e00783e61165643e1&units=metric")
+  // fetch('https://api.openweathermap.org/data/2.5/weather?lat=24.5854&lon=73.7125&appid=d2978ac34827965e00783e61165643e1')
+  fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+'&appid=d2978ac34827965e00783e61165643e1')
   .then(function(response) {
     return response.json();
   })
   .then(function(response) {
-    if(response.cod === "404") {
+    if(response.code === "404") {
         that.setState({
           cityNameFound: false,
           cityNameError: true,
           loadingIndicator: false
         })
       }
-    else if(response.cod === 200) {
+    else if(response.code === 200) {
+      
+
       console.log("Response from openweathermap api " , response);
       let sunrise =  new Date(response.sys.sunrise*1000).toLocaleTimeString();
       let sunset =  new Date(response.sys.sunset*1000).toLocaleTimeString();
