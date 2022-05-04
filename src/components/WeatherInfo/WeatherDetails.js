@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CommentSection from "../Comment/CommentSection";
 import './WeatherDetails.css';
 export class WeatherDetails extends Component {
   // constructor(props) {
@@ -45,6 +46,7 @@ export class WeatherDetails extends Component {
         </div>
         <div className="commentSection">
           {/* <AddComment></AddComment> */}
+          <CommentSection />
         </div>
         <br />
         <br />
