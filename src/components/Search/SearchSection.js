@@ -5,34 +5,25 @@ import PropTypes from "prop-types";
 
 class SearchSection extends Component {
 
-  cityName="Udaipur";
 
   constructor(props) {
     super(props);
     this.state = {
-      cityName: null,
-    };
+        cityName : null,
+        }
     this.handleSearchInput = this.handleSearchInput.bind(this);
   }
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     cityName: null,
-  //   };
-  //   //this.handleSearchInput = this.handleSearchInput.bind(this);
-  // }
 
 
   updateCityName(e) {
-    this.setState({ cityName: e.target.value });
+    this.setState({ cityName: e.target.value })
   }
 
   handleSearchInput() {
-    alert()
-    console.log("handleSearchInput fired");
-    this.props.searchCity(this.props.cityName);
-  }
+    console.log('handleSearchInput fired');
+    this.props.searchCity(this.state.cityName);
+}
   
 
   render() {
@@ -42,7 +33,7 @@ class SearchSection extends Component {
           className="inputLocation"
           placeholder="Enter City Name..."
           value={this.state.cityName}
-          onChange={(e) => this.updateCityName(e)}
+          onChange={e => this.updateCityName(e)}
         />
         <button className="searchButton" onClick={this.handleSearchInput}>
           Search
@@ -53,8 +44,6 @@ class SearchSection extends Component {
 }
 
 SearchSection.propTypes = {
-  searchCity: PropTypes.func,
+  searchCity: PropTypes.func
 };
-
-
 export default SearchSection;
