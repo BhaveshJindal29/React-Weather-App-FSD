@@ -45,7 +45,7 @@ export class WeatherDetails extends Component {
           </div>
         </div>
         <div className="commentSection">
-          {/* <AddComment></AddComment> */}
+          
           <CommentSection />
         </div>
         <br />

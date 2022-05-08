@@ -4,6 +4,9 @@ import "./SearchSection.css";
 import PropTypes from "prop-types";
 
 class SearchSection extends Component {
+
+  cityName="Udaipur";
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +29,7 @@ class SearchSection extends Component {
   }
 
   handleSearchInput() {
+    alert()
     console.log("handleSearchInput fired");
     this.props.searchCity(this.props.cityName);
   }

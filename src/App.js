@@ -28,8 +28,10 @@ class App extends Component {
 
       }
     console.log("Constructor of WeatherApp class loaded.");
-    
+    this.searchCity = this.searchCity.bind(this);
   }
+
+
 
   searchCity = (name) =>{
     this.setState({
@@ -38,66 +40,57 @@ class App extends Component {
       cityNameError: false
     })
 
-  // searchCity(name) {
-  //   this.setState({
-  //     cityNameFound: false,
-  //     loadingIndicator: true,
-  //     cityNameError: false
-  //   })
-
 let that = this;
 
-  // fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+"&appid=d2978ac34827965e00783e61165643e1&units=metric")
-  // fetch('https://api.openweathermap.org/data/2.5/weather?lat=24.5854&lon=73.7125&appid=d2978ac34827965e00783e61165643e1')
-  fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+'&appid=d2978ac34827965e00783e61165643e1')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(response) {
-    if(response.code === "404") {
-        that.setState({
-          cityNameFound: false,
-          cityNameError: true,
-          loadingIndicator: false
-        })
-      }
-    else if(response.code === 200) {
-      
+alert(name)
 
-      console.log("Response from openweathermap api " , response);
-      let sunrise =  new Date(response.sys.sunrise*1000).toLocaleTimeString();
-      let sunset =  new Date(response.sys.sunset*1000).toLocaleTimeString();
-      // console.log("sunrise " ,sunrise);
-
-      // sunrise = sunrise.getTime();
-      // sunset = sunset.getTime();
-      // sunrise = sunrise.split(' ');
-      // sunrise = sunrise[0];
-      // sunset = sunset.split(' ');
-      // sunset = sunset[0];
-
-      // cityWeatherDescription = response.weather[0].description
+fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+"&appid=80186bc6ef5c092a7aa7bcdb10ea8c80&units=metric")
+.then(function(response) {
+  return response.json();
+})
+.then(function(response) {
+  if(response.cod === "404") {
       that.setState({
-        cityNameFound: true,
-        cityNameError: false,
-        cityName: response.name,
-        cityTemperature: response.main.temp,
-        cityWeatherDescription: response.weather[0].main,
-        cityWind : response.wind.speed,
-        cityHumidity: response.main.humidity,
-        cityMaxTmp: response.main.temp_max,
-        cityMinTmp: response.main.temp_min,
-        cityPressure: response.main.pressure,
-        weatherIcon: response.weather[0].icon,
-        loadingIndicator: false,
-        cityCountry: response.sys.country,
-        citySunrise: sunrise,
-        citySunset: sunset
-
+        cityNameFound: false,
+        cityNameError: true,
+        loadingIndicator: false
       })
+    }
+  else if(response.cod === 200) {
+    console.log("Response from openweathermap api " , response);
+    let sunrise =  new Date(response.sys.sunrise*1000).toLocaleTimeString();
+    let sunset =  new Date(response.sys.sunset*1000).toLocaleTimeString();
+    // console.log("sunrise " ,sunrise);
 
-    } 
-  });
+    // sunrise = sunrise.getTime();
+    // sunset = sunset.getTime();
+    // sunrise = sunrise.split(' ');
+    // sunrise = sunrise[0];
+    // sunset = sunset.split(' ');
+    // sunset = sunset[0];
+
+    // cityWeatherDescription = response.weather[0].description
+    that.setState({
+      cityNameFound: true,
+      cityNameError: false,
+      cityName: response.name,
+      cityTemperature: response.main.temp,
+      cityWeatherDescription: response.weather[0].main,
+      cityWind : response.wind.speed,
+      cityHumidity: response.main.humidity,
+      cityMaxTmp: response.main.temp_max,
+      cityMinTmp: response.main.temp_min,
+      cityPressure: response.main.pressure,
+      weatherIcon: response.weather[0].icon,
+      loadingIndicator: false,
+      cityCountry: response.sys.country,
+      citySunrise: sunrise,
+      citySunset: sunset
+
+    })
+
+  } 
+});
   }
 
 
