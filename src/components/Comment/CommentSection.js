@@ -5,20 +5,11 @@ export class CommentSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: [],
+      comments: [], // array to store comments
       userComment: null,
     };
     this.postComment = this.postComment.bind(this);
   }
-
-  //   constructor() {
-  //     super();
-  //     this.state = {
-  //         comments : [],
-  //         userComment:null,
-  //         }
-  //     //this.postComment = this.postComment.bind(this);
-  //   }
 
   updateUserComment(e) {
     this.setState({ userComment: e.target.value });
@@ -29,7 +20,6 @@ export class CommentSection extends Component {
       this.setState({
         userComment: "",
       });
-      console.log("postComment fired");
       this.state.comments.push(this.state.userComment);
     }
   }
@@ -45,12 +35,13 @@ export class CommentSection extends Component {
         <div>
           <div>
             <div className="commentMain">
-              <textarea className="writeCommenttextBox"
+              <textarea
+                className="writeCommenttextBox"
                 placeholder="Enter your comment here..."
                 value={this.state.userComment}
-                 onChange={(e) => this.updateUserComment(e)}
+                onChange={(e) => this.updateUserComment(e)}
               ></textarea>
-              <br/>
+              <br />
               <button className="commentBtn" onClick={this.postComment}>
                 Comment
               </button>
