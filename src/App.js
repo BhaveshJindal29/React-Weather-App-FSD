@@ -8,9 +8,13 @@ import WeatherDetails from './components/WeatherInfo/WeatherDetails';
 
 class App extends Component {
 
+
+
   constructor(props) {
     super(props);
     this.state = {
+
+      //setting initial states
         cityNameFound: null,
         cityNameError: false,
         loadingIndicator: false,
@@ -27,12 +31,13 @@ class App extends Component {
         cityCountry: null,
 
       }
-    console.log("Constructor of WeatherApp class loaded.");
+    console.log("App Component Constructor");
     this.searchCity = this.searchCity.bind(this);
   }
 
 
 
+  //Search Method 
   searchCity = (name) =>{
     this.setState({
       cityNameFound: false,
@@ -42,34 +47,27 @@ class App extends Component {
 
 let that = this;
 
-alert(name)
+// alert(name)
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+"&appid=80186bc6ef5c092a7aa7bcdb10ea8c80&units=metric")
+
+//Fetching data using API
+fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+"&appid=d2978ac34827965e00783e61165643e1&units=metric")
 .then(function(response) {
   return response.json();
 })
 .then(function(response) {
-  if(response.cod === "404") {
+  if(response.cod === "404") {   // If city name is incorrect
       that.setState({
         cityNameFound: false,
         cityNameError: true,
         loadingIndicator: false
       })
     }
-  else if(response.cod === 200) {
+  else if(response.cod === 200) {   //if city name is correct
     console.log("Response from openweathermap api " , response);
     let sunrise =  new Date(response.sys.sunrise*1000).toLocaleTimeString();
     let sunset =  new Date(response.sys.sunset*1000).toLocaleTimeString();
-    // console.log("sunrise " ,sunrise);
 
-    // sunrise = sunrise.getTime();
-    // sunset = sunset.getTime();
-    // sunrise = sunrise.split(' ');
-    // sunrise = sunrise[0];
-    // sunset = sunset.split(' ');
-    // sunset = sunset[0];
-
-    // cityWeatherDescription = response.weather[0].description
     that.setState({
       cityNameFound: true,
       cityNameError: false,
@@ -98,9 +96,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+"&appid=80186bc6
   render(){
 
     let showErrorMessage = this.state.cityNameError === true ? (
-      <div
-      style={{background: '#FFFFFF',  color: 'grey', textAlign:'center', boxShadow: '0px 4px 32px rgba(143, 143, 143, 0.4)', borderRadius: '4px', padding: '10px', marginTop: '10px' ,  paddingBottom: '10px'  , marginLeft: '15%',  marginRight: '15%'}}
-      >
+      <div className='cityNotExist'>
         <h4>City Name not found</h4>
       </div>
     ) : (''
@@ -124,9 +120,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+"&appid=80186bc6
     
     ) : (
       this.state.loadingIndicator === true ? (
-        <div
-      style={{background: '#FFFFFF',  color: 'grey', textAlign:'justify', boxShadow: '0px 4px 32px rgba(143, 143, 143, 0.4)', borderRadius: '4px', padding: '10px', marginTop: '10px' ,  paddingBottom: '10px'  , marginLeft: '15%',  marginRight: '15%'}}
-      >
+        <div className='searchingName'>
         <h4>Searching City name...</h4>
       </div>
       ) : (' ')
